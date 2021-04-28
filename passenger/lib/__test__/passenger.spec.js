@@ -5,39 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = __importDefault(require("../task/app"));
 var mock_1 = require("./mock");
-var firstMultipleShuffle = [
-    { name: 'passenger51', location: 'Abuja' },
-    { name: 'passenger52', location: 'Benue' },
-    { name: 'passenger53', location: 'Katsina' },
-    { name: 'passenger54', location: 'Lagos' },
-    { name: 'passenger55', location: 'Sambisa' },
-    { name: 'passenger56', location: 'Abuja' },
-    { name: 'passenger57', location: 'Benue' },
-    { name: 'passenger58', location: 'Katsina' },
-    { name: 'passenger59', location: 'Lagos' },
-    { name: 'passenger60', location: 'Sambisa' }
-];
-var secondMultipleShuffle = [
-    { name: 'passenger101', location: 'Abuja' },
-    { name: 'passenger102', location: 'Benue' },
-    { name: 'passenger103', location: 'Katsina' },
-    { name: 'passenger104', location: 'Lagos' },
-    { name: 'passenger105', location: 'Sambisa' }
-];
-var thirdMultipleShuffle = [
-    { name: 'passenger151', location: 'Abuja' },
-    { name: 'passenger152', location: 'Benue' },
-    { name: 'passenger153', location: 'Katsina' },
-    { name: 'passenger154', location: 'Lagos' },
-    { name: 'passenger155', location: 'Sambisa' }
-];
-var fourthMultipleShuffle = [
-    { name: 'passenger201', location: 'Abuja' },
-    { name: 'passenger202', location: 'Benue' },
-    { name: 'passenger203', location: 'Katsina' },
-    { name: 'passenger204', location: 'Lagos' },
-    { name: 'passenger205', location: 'Sambisa' }
-];
+var generateMockPassengers = function (start, end) {
+    var passengers = [];
+    var count = 0;
+    var locations = ['Abuja', 'Benue', 'Katsina', 'Lagos', 'Sambisa'];
+    for (var i = start; i <= end; i++) {
+        var person = { name: "passenger" + i, location: locations[count] };
+        passengers.push(person);
+        count === 4 ? count = 0 : count++;
+    }
+    return passengers;
+};
+var firstMultipleShuffle = generateMockPassengers(51, 60);
+var secondMultipleShuffle = generateMockPassengers(101, 105);
+var thirdMultipleShuffle = generateMockPassengers(151, 155);
+var fourthMultipleShuffle = generateMockPassengers(201, 205);
 var locations = ['Sambisa', 'Abuja', 'Benue', 'Lagos', 'Katsina'].sort();
 describe("Test for function structure", function () {
     it("Returns an object for even distro", function () {

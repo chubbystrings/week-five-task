@@ -10,7 +10,7 @@ interface data {
     count: number
 }
 
-type locationsTuple = ['Abuja', 'Benue', 'Katsina', 'Lagos', 'Sambisa',]
+export type locationsTuple = ['Abuja', 'Benue', 'Katsina', 'Lagos', 'Sambisa',]
 
 
 const taskOne = (passengers:number, shuffle:number): data  =>{

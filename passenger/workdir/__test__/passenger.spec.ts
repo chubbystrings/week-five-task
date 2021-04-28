@@ -1,4 +1,4 @@
-import task, { person } from "../task/app";
+import task, { person, locationsTuple } from "../task/app";
 import { prefilled } from "./mock";
 
 interface frequency {
@@ -12,45 +12,26 @@ interface data {
 }
 
 
+const generateMockPassengers = (start:number, end:number,): person[] => {
+  const passengers:person[] = [];
+  let count:number = 0;
+  const locations: locationsTuple = [ 'Abuja', 'Benue', 'Katsina', 'Lagos', 'Sambisa']
+  for (let i=start; i <= end; i++) {
+      const person = { name: `passenger${i}`, location: locations[count] };
+      passengers.push(person);
+      count === 4 ? count = 0 : count++;
+  }
+  return passengers
+}
 
-const firstMultipleShuffle: person[] = [
-  { name: 'passenger51', location: 'Abuja' }, 
-  { name: 'passenger52', location: 'Benue' }, 
-  { name: 'passenger53', location: 'Katsina' }, 
-  { name: 'passenger54', location: 'Lagos' }, 
-  { name: 'passenger55', location: 'Sambisa' }, 
-  { name: 'passenger56', location: 'Abuja' }, 
-  { name: 'passenger57', location: 'Benue' }, 
-  { name: 'passenger58', location: 'Katsina' }, 
-  { name: 'passenger59', location: 'Lagos' }, 
-  { name: 'passenger60', location: 'Sambisa' }
-];
+const firstMultipleShuffle: person[] = generateMockPassengers(51, 60)
 
-const secondMultipleShuffle : person[] = [
-  { name: 'passenger101', location: 'Abuja' }, 
-  { name: 'passenger102', location: 'Benue' }, 
-  { name: 'passenger103', location: 'Katsina' }, 
-  { name: 'passenger104', location: 'Lagos' }, 
-  { name: 'passenger105', location: 'Sambisa' }
-]
+const secondMultipleShuffle : person[] = generateMockPassengers(101, 105)
 
-const thirdMultipleShuffle: person[] =[
+const thirdMultipleShuffle: person[] = generateMockPassengers(151, 155)
 
-  { name: 'passenger151', location: 'Abuja' }, 
-  { name: 'passenger152', location: 'Benue' }, 
-  { name: 'passenger153', location: 'Katsina' }, 
-  { name: 'passenger154', location: 'Lagos' }, 
-  { name: 'passenger155', location: 'Sambisa' }
-]
+const fourthMultipleShuffle: person[] = generateMockPassengers(201, 205)
 
-const fourthMultipleShuffle: person[] = [
-
-  { name: 'passenger201', location: 'Abuja' }, 
-  { name: 'passenger202', location: 'Benue' }, 
-  { name: 'passenger203', location: 'Katsina' }, 
-  { name: 'passenger204', location: 'Lagos' }, 
-  { name: 'passenger205', location: 'Sambisa' }
-]
 
 const locations:string[] = ['Sambisa', 'Abuja', 'Benue', 'Lagos', 'Katsina'].sort()
 
